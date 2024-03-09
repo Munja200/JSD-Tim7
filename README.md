@@ -9,5 +9,5 @@ Receipt DSL je projekat u kojem ćemo razviti jezik specifičan za domen koji om
 * Uputstva za spremanje - opisuju se koraci za pripremanje jela sa navedenim sastojcima
 * Nutritivne vrednosti - opciono se mogu navesti nutritivne vrednosti sastojaka
 * Saveti - mogu se podeliti saveti i varijacije za unapređenje recepta
-
-![Recept](https://marketplace.canva.com/EAFNsV8XtFc/1/0/1067w/canva-white-modern-recipe-card-g0ij-n11PwM.jpg)
+#
+<img src="https://marketplace.canva.com/EAFNsV8XtFc/1/0/1067w/canva-white-modern-recipe-card-g0ij-n11PwM.jpg" width="400" height="550"/>
