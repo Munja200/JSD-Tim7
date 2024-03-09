@@ -10,4 +10,4 @@ Receipt DSL je projekat u kojem ćemo razviti jezik specifičan za domen koji om
 * Nutritivne vrednosti - opciono se mogu navesti nutritivne vrednosti sastojaka
 * Saveti - mogu se podeliti saveti i varijacije za unapređenje recepta
 
-![Recept](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.canva.com%2Frecipe-cards%2Ftemplates%2F&psig=AOvVaw3iB-hLRExdsFemFZkSadYd&ust=1710082585414000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCNC6nJq454QDFQAAAAAdAAAAABAh)
+![Recept](https://marketplace.canva.com/EAFNsV8XtFc/1/0/1067w/canva-white-modern-recipe-card-g0ij-n11PwM.jpg)
