@@ -1,15 +1,26 @@
 Namirnice: 
   Ime namirnice: 'Banane'
   Nutritivna vrednost: 5 kcal na 1 KG
+  
+  Ime namirnice: 'Brašno'
+  Nutritivna vrednost: 30 kcal na 100 G
+  Alergeni:
+    Naziv: 'Gluten'
 
 Recepti:
-  Ime: 'ime recepta'
-  Opis jela: 'opis jela'
-  Vrsta jela: 'Voce'
-  Vreme pripreme: 15:00
+  Ime: 'Banana hleb'
+  Opis jela: 'pecivo sa bananom'
+  Vrsta jela: 'Pecivo'
+  Vreme pripreme: 0:30
   Lista sastojaka:
-    Ime sastojka: 'ime sastojka'
+    Ime sastojka: 'banane'
     Kolicina: 1 KG
+
+    Ime sastojka: 'brašno'
+    Kolicina: 500 G
+
   Upustvo za spremanje: 
     Koraci: 
-      'korak 1'
+      'Izmiksati banane'
+      'Pomešati sa brašnom'
+      'Ispeći'
