@@ -1,0 +1,15 @@
+Namirnice: 
+  Ime namirnice: 'Banane'
+  Nutritivna vrednost: 5 kcal na 1 KG
+
+Recepti:
+  Ime: 'ime recepta'
+  Opis jela: 'opis jela'
+  Vrsta jela: 'Voce'
+  Vreme pripreme: 15:00
+  Lista sastojaka:
+    Ime sastojka: 'ime sastojka'
+    Kolicina: 1 KG
+  Upustvo za spremanje: 
+    Koraci: 
+      'korak 1'
