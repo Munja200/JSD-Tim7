@@ -25,6 +25,11 @@ VremePripreme:
 Namirnica:
     'Ime namirnice:' imeNamirnice=STRING
     'Nutritivna vrednost:' nutVrednost=NutritivnaVrednost
+    ('Alergeni:' alergeni*=Alergen)?
+;
+
+Alergen:
+    'Naziv:' naziv=STRING
 ;
 
 NutritivnaVrednost:
