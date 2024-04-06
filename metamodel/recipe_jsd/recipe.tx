@@ -1,0 +1,49 @@
+KnjigaRecepata:
+    'Namirnice:' namirnice+=Namirnica
+    'Recepti:' recepti+=Recept
+;
+
+Recept:
+    'Ime:' name=STRING
+    'Opis jela:' opis=STRING
+    'Vrsta jela:' vrsta=STRING
+    'Vreme pripreme:' vreme=VremePripreme
+    'Lista sastojaka:' sastojci+=Sastojak
+    'Upustvo za spremanje:' uputstvo=Uputstvo
+    ('Nutritivna vrednost:' nutVrednost=STRING)?
+    ('Saveti:' saveti*=Savet)?
+;
+
+Savet:
+    tekst="STRING"
+;
+
+VremePripreme:
+    sati=INT ':' minuti=INT
+;
+
+Namirnica:
+    'Ime namirnice:' imeNamirnice=STRING
+    'Nutritivna vrednost:' nutVrednost=NutritivnaVrednost
+;
+
+NutritivnaVrednost:
+    vrednost=INT 'kcal na ' kolicina=INT jedinicaMase=JedinicaMase
+;
+
+JedinicaMase:
+    'KG' | 'G'
+;
+
+Sastojak:
+    'Ime sastojka:' imeSastojka=STRING
+    'Kolicina:' kolicina=INT jedinicaMase=JedinicaMase
+;
+
+Uputstvo:
+    'Koraci:' koraci+=Korak
+;
+
+Korak:
+    tekst=STRING
+;
