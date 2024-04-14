@@ -4,18 +4,23 @@ KnjigaRecepata:
 ;
 
 Recept:
-    'Ime:' name=STRING
-    'Opis jela:' opis=STRING
-    'Vrsta jela:' vrsta=STRING
-    'Vreme pripreme:' vreme=VremePripreme
+    'Ime:' name=StringBezNavodnika
+    ('URL do slike jela:' url=URL ';')?
+    'Opis jela:' opis=StringBezNavodnika
+    'Vrsta jela:' vrsta=StringBezNavodnika
+    'Vreme pripreme:' vreme=VremePripreme ';'
     'Lista sastojaka:' sastojci+=Sastojak
     'Upustvo za spremanje:' uputstvo=Uputstvo
-    ('Nutritivna vrednost:' nutVrednost=STRING)?
+    ('Nutritivna vrednost:' nutVrednost=StringBezNavodnika)?
     ('Saveti:' saveti*=Savet)?
 ;
 
+URL: '"'- URL_BAZA '"'- | '\''- URL_BAZA '\''-;
+
+URL_BAZA: /https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)/;
+
 Savet:
-    tekst="STRING"
+    tekst="StringBezNavodnika"
 ;
 
 VremePripreme:
@@ -23,13 +28,13 @@ VremePripreme:
 ;
 
 Namirnica:
-    'Ime namirnice:' imeNamirnice=STRING
-    'Nutritivna vrednost:' nutVrednost=NutritivnaVrednost
+    'Ime namirnice:' imeNamirnice=StringBezNavodnika
+    'Nutritivna vrednost:' nutVrednost=NutritivnaVrednost ';'
     ('Alergeni:' alergeni*=Alergen)?
 ;
 
 Alergen:
-    'Naziv:' naziv=STRING
+    'Naziv:' naziv=StringBezNavodnika
 ;
 
 NutritivnaVrednost:
@@ -37,18 +42,37 @@ NutritivnaVrednost:
 ;
 
 JedinicaMase:
-    'KG' | 'G'
+    'KG' | 'kg' | 'G' | 'g'
 ;
 
 Sastojak:
-    'Ime sastojka:' imeSastojka=STRING
-    'Kolicina:' kolicina=INT jedinicaMase=JedinicaMase
+    RedniBroj imeSastojka=StringBezNavodnikaOdvojenZarezom kolicina=INT jedinicaMase=JedinicaMase ';'
+;
+
+RedniBroj:
+    INT '.'
 ;
 
 Uputstvo:
-    'Koraci:' koraci+=Korak
+    koraci+=Korak
 ;
 
 Korak:
-    tekst=STRING
+    RedniBroj tekst=StringBezNavodnika
+;
+
+StringBezNavodnika[noskipws]:
+ /\s*/- Reč+ ';'-
+;
+
+StringBezNavodnikaOdvojenZarezom[noskipws]:
+ /\s*/- RečBezZareza+ ','-
+;
+
+Reč:
+    ID /[.,:?!\s]*/
+;
+
+RečBezZareza:
+    ID /[.:?!\s]*/
 ;
