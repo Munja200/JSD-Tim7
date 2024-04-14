@@ -18,29 +18,26 @@ Izlaz programa je generisana HTML/PDF stranica sa receptom.
 ## Primer
 ```
 Namirnice: 
-  Ime namirnice: 'Banane'
-  Nutritivna vrednost: 5 kcal na 1 KG
+  Ime namirnice: Banane;
+  Nutritivna vrednost: 5 kcal na 1 KG;
   
-  Ime namirnice: 'Brašno'
-  Nutritivna vrednost: 30 kcal na 100 G
+  Ime namirnice: Brašno;
+  Nutritivna vrednost: 30 kcal na 100 G;
   Alergeni:
-    Naziv: 'Gluten'
+    Naziv: Gluten;
 
 Recepti:
-  Ime: 'Banana hleb'
-  Opis jela: 'pecivo sa bananom'
-  Vrsta jela: 'Pecivo'
-  Vreme pripreme: 0:30
+  Ime: Banana hleb;
+  URL do slike jela: "https://marketplace.canva.com/EAFNsV8XtFc/1/0/1067w/canva-white-modern-recipe-card-g0ij-n11PwM.jpg";
+  Opis jela: pecivo sa bananom;
+  Vrsta jela: Pecivo;
+  Vreme pripreme: 0:30;
   Lista sastojaka:
-    Ime sastojka: 'banane'
-    Kolicina: 1 KG
+    1. banane, 1KG;
+    2. brašno, 500g;
 
-    Ime sastojka: 'brašno'
-    Kolicina: 500 G
-
-  Upustvo za spremanje: 
-    Koraci: 
-      'Izmiksati banane'
-      'Pomešati sa brašnom'
-      'Ispeći'
+  Upustvo za spremanje:  
+    1. Izmiksati banane;
+    2. Pomešati sa brašnom;
+    3. Ispeći;
 ```
