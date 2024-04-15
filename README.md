@@ -23,8 +23,8 @@ Namirnice:
   
   Ime namirnice: Brašno;
   Nutritivna vrednost: 30 kcal na 100 G;
-  Alergeni:
-    Naziv: Gluten;
+  Alergeni: 
+    1. Gluten;
 
 Recepti:
   Ime: Banana hleb;
@@ -33,8 +33,8 @@ Recepti:
   Vrsta jela: Pecivo;
   Vreme pripreme: 0:30;
   Lista sastojaka:
-    1. banane, 1KG;
-    2. brašno, 500g;
+    1. banane, 1 KG;
+    2. brašno, 500 g;
 
   Upustvo za spremanje:  
     1. Izmiksati banane;
