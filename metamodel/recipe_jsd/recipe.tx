@@ -20,7 +20,7 @@ URL: '"'- URL_BAZA '"'- | '\''- URL_BAZA '\''-;
 URL_BAZA: /https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)/;
 
 Savet:
-    tekst="StringBezNavodnika"
+    tekst=StringBezNavodnika
 ;
 
 VremePripreme:
@@ -34,7 +34,8 @@ Namirnica:
 ;
 
 Alergen:
-    'Naziv:' naziv=StringBezNavodnika
+    RedniBroj
+    naziv=StringBezNavodnika
 ;
 
 NutritivnaVrednost:
