@@ -17,7 +17,7 @@
     },
     {
       "name": "entity.name.variable.rcp",
-      "match": "\\b(Ime namirnice|Nutritivna vrednost|Alergeni|Ime|URL do slike jela|Opis jela|Vrsta jela|Vreme pripreme|Lista sastojaka|Upustvo za spremanje)\\b"
+      "match": "\\b(Ime namirnice|Nutritivna vrednost|Alergeni|Ime|URL do slike jela|Opis jela|Vrsta jela|Vreme pripreme|Lista sastojaka|Uputstvo za spremanje)\\b"
     },
     {
       "name": "string.quoted.single",

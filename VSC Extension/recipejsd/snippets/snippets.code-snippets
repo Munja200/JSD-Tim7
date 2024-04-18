@@ -1,0 +1,23 @@
+{
+  "RecepieSnippet": {
+    "prefix": "rcp",
+    "body": [
+        "Namirnice:",
+        "\tIme namirnice: ;",
+        "\tNutritivna vrednost: ;",
+        "\tAlergeni:",
+        "\t\t1. ;",
+        "\nRecepti:",
+        "\tIme: ;",
+        "\tURL do slike jela: \"\";",
+        "\tOpis jela: ;",
+        "\tVrsta jela: ;",
+        "\tVreme pripreme: ;",
+        "\tLista sastojaka:",
+        "\t\t1. ;",
+        "\n\tUputstvo za spremanje:",
+        "\t\t1. ;"
+    ],
+    "description": "Creates the structure of the recepie"
+  }
+}
