@@ -10,16 +10,31 @@
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "rcp",
-      "aliases": ["Recipe DSL", "rcp"],
-      "extensions": [".rcp"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "rcp",
-      "scopeName": "source.rcp",
-      "path": "./syntaxes/rcp.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "rcp",
+        "aliases": [
+          "Recipe DSL",
+          "rcp"
+        ],
+        "extensions": [
+          ".rcp"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "rcp",
+        "scopeName": "source.rcp",
+        "path": "./syntaxes/rcp.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "rcp",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
   }
 }
