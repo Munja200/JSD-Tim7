@@ -15,3 +15,11 @@ def recipe_language():
     # http://textx.github.io/textX/stable/scoping/
 
     return mm
+
+
+def init_cv_metamodel():
+    cv_grammar_path = 'src/dsl/cv.tx'
+    cv_metamodel = metamodel_from_file(cv_grammar_path)
+
+
+    return cv_metamodel
