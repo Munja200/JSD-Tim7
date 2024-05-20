@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sedan:ital@0;1&display=swap" rel="stylesheet">
+    <title>Cooking Recipes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: "Sedan", serif;
+            font-weight: 500;
+            font-style: normal;
+            color: #885B31;
+            font-size: 50px;
+            margin-bottom: 0;
+            position: relative;
+            top: -35px;
+            margin-left: 30px;
+            margin-top: 0;
+        }
+
+        .page-title{
+            font-family: "Sedan", serif;
+            font-weight: 900;
+            color: #885B31;
+            font-size: 50px;
+        }
+
+        ul, ol{
+            margin-top:-15px;
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 7px;
+        }
+
+        .section {
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #F9F3EE;
+            border-radius: 30px;
+            margin-bottom: 70px;
+            padding-bottom: 10px;
+        }
+
+        .instructions {
+            margin-bottom: 20px;
+        }
+
+        .notes {
+            font-style: italic;
+        }
+
+        .tips-text {
+            margin-left: 40px;
+            margin-top: -20px;
+        }
+
+        .recipe-image {
+            width: 75vh;
+            height: 55vh;
+            object-fit: cover;
+            border-radius: 30px;
+            margin-bottom: 20px;
+        }
+
+        .main-image-container{
+            display: flex;
+        }
+
+        .recipe-info-section{
+            margin-left: 20px;
+            margin-top: 20px;
+            background-color: #F9F3EE;
+            border-radius: 20px;
+            width: 250px;
+            height: fit-content;
+            padding-top: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            position: relative;
+            top: 30px;
+            left: -80px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;               
+        }
+
+        .icon{
+            width: 30px;
+        }
+
+        .icon-text{
+            margin-left: 5px;
+            font-weight: bold;
+        }
+
+        .description-text{
+            margin-top: 20px;
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+
+        .icons-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ingredients-container{
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .ingredients-container .section:first-child{
+            margin-right: 20px;
+        }
+        .ingredients-container .section:last-child{
+            margin-left: 20px;
+        }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="page-title">{{ title }}</h1>
+
+        <div class="main-image-container">
+            <img class="recipe-image" src="{{ image_url }}">
+            <div class="recipe-info-section">
+                <div class="icons-container">
+                    <img class="icon" src="icons/stopwatch.png">
+                    <span class="icon-text">{{ cooking_time }} min</span>
+                    <img class="icon" style="margin-left: 15px;" src="icons/calories-calculator.png">
+                    <span class="icon-text">{{ calories }} kcal</span>
+                </div>
+                <div class="description-text">
+                    {{ description }}                  
+                </div>
+            </div>
+        </div>
+
+
+        <div class="ingredients-container">
+            <div class="section half-screen-section">
+                <h2 class="section-title">Sastojci</h2>
+                <ul>
+                    {% for ingredient in ingredients %}
+                        <li>{{ ingredient }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="section half-screen-section">
+                <h2 class="section-title">Alergeni</h2>
+                <ul>
+                    {% for allergen in allergens %}
+                        <li>{{ allergen }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="section">
+            <h2 class="section-title">Uputstvo za spremanje</h2>
+            <ol>
+                {% for step in steps %}
+                    <li>{{ step }}</li>
+                {% endfor %}
+            </ol>
+        </div>
+        <div class="section">
+            <h2 class="section-title">Saveti</h2>
+            <p class="tips-text">{{ tips }}</p>
+        </div>
+    </div>
+</body>
+</html>
