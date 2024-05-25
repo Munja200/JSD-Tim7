@@ -15,9 +15,20 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            margin-top: 30px;
+            border-radius:20px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
         }
         h1 {
             text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h4{
+            color: #885B31;
+            text-align: center;
+            margin-top:0;
+            margin-bottom:30px;
         }
 
         .section-title {
@@ -136,55 +147,61 @@
         </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="page-title">{{ title }}</h1>
-
-        <div class="main-image-container">
-            <img class="recipe-image" src="{{ image_url }}">
-            <div class="recipe-info-section">
-                <div class="icons-container">
-                    <img class="icon" src="icons/stopwatch.png">
-                    <span class="icon-text">{{ cooking_time }} min</span>
-                    <img class="icon" style="margin-left: 15px;" src="icons/calories-calculator.png">
-                    <span class="icon-text">{{ calories }} kcal</span>
-                </div>
-                <div class="description-text">
-                    {{ description }}                  
+    {% for recept in model.recepti %}
+        <div class="container">
+            <h1 class="page-title">{{ recept.name }}</h1>
+            <h4>-{{ recept.vrsta }}-</h4>
+            <div class="main-image-container">
+                <img class="recipe-image" src="{{ recept.url }}">
+                <div class="recipe-info-section">
+                    <div class="icons-container">
+                        <img class="icon" src="icons/stopwatch.png">
+                        <span class="icon-text">{{ recept.vreme.sati }}:{{ recept.vreme.minuti }}</span>
+                        <img class="icon" style="margin-left: 15px;" src="icons/calories-calculator.png">
+                        <span class="icon-text">{{ recept.vrednost }}kcal</span>
+                    </div>
+                    <div class="description-text">
+                        {{ recept.opis }}               
+                    </div>
                 </div>
             </div>
-        </div>
 
 
-        <div class="ingredients-container">
-            <div class="section half-screen-section">
-                <h2 class="section-title">Sastojci</h2>
+            <div class="ingredients-container">
+                <div class="section half-screen-section">
+                    <h2 class="section-title">Sastojci</h2>
+                    <ul>
+                        {% for sastojak in recept.sastojci %}
+                            <li>{{sastojak.kolicina}} {{ sastojak.jedinicaMase}} {{sastojak.imeSastojka}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="section half-screen-section">
+                    <h2 class="section-title">Alergeni</h2>
+                    <ul>
+                        {% for alergen in recept.alergeni %}
+                            <li>{{ alergen.naziv }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="section">
+                <h2 class="section-title">Uputstvo za spremanje</h2>
+                <ol>
+                    {% for korak in recept.uputstvo.koraci %}
+                        <li>{{ korak.tekst }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <div class="section">
+                <h2 class="section-title">Saveti</h2>
                 <ul>
-                    {% for ingredient in ingredients %}
-                        <li>{{ ingredient }}</li>
+                    {% for savet in recept.savet.koraci %}
+                        <li>{{ savet.tekst }}</li>
                     {% endfor %}
                 </ul>
             </div>
-            <div class="section half-screen-section">
-                <h2 class="section-title">Alergeni</h2>
-                <ul>
-                    {% for allergen in allergens %}
-                        <li>{{ allergen }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
         </div>
-        <div class="section">
-            <h2 class="section-title">Uputstvo za spremanje</h2>
-            <ol>
-                {% for step in steps %}
-                    <li>{{ step }}</li>
-                {% endfor %}
-            </ol>
-        </div>
-        <div class="section">
-            <h2 class="section-title">Saveti</h2>
-            <p class="tips-text">{{ tips }}</p>
-        </div>
-    </div>
+    {% endfor %}
 </body>
 </html>
