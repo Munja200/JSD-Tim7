@@ -12,7 +12,7 @@ Recept:
     'Lista sastojaka:' sastojci+=Sastojak
     'Upustvo za spremanje:' uputstvo=Uputstvo
     ('Nutritivna vrednost:' nutVrednost=StringBezNavodnika)?
-    ('Saveti:' saveti*=Savet)?
+    ('Saveti:' savet=Savet)?
 ;
 
 URL: '"'- URL_BAZA '"'- | '\''- URL_BAZA '\''-;
@@ -20,7 +20,7 @@ URL: '"'- URL_BAZA '"'- | '\''- URL_BAZA '\''-;
 URL_BAZA: /https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)/;
 
 Savet:
-    tekst=StringBezNavodnika
+    koraci+=Korak
 ;
 
 VremePripreme:

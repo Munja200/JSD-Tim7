@@ -1,16 +1,16 @@
 class Recept:
 
-    def __init__(self, vrednost=None, alergeni=None, ime=None, opis=None, url=None, vrsta=None, vreme=None,
-     sastojci=None, upustvo=None, nutVrednost=None, saveti=None):
+    def __init__(self, vrednost=None, alergeni=None, name=None, opis=None, url=None, vrsta=None, vreme=None,
+     sastojci=None, uputstvo=None, nutVrednost=None, savet=None):
         self.vrednost = vrednost
         self.alergeni = alergeni
-        self.ime = ime
+        self.name = name
         self.opis = opis
         self.url = url
         self.vrsta = vrsta
         self.vreme = vreme
         self.sastojci = sastojci
-        self.upustvo = upustvo
+        self.uputstvo = uputstvo
         self.nutVrednost = nutVrednost
-        self.saveti = saveti
+        self.savet = savet
 

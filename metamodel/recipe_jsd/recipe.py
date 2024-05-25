@@ -1,11 +1,11 @@
 import os
 
-from model import Recept
+from .model import Recept
 from textx import metamodel_from_file, language
 from textx.export import model_export
 
 def recipe_processor(info):
-    return Recept(vrednost=0, alergeni=[], ime=info.name, opis=info.opis, url=info.url, vrsta=info.vrsta, vreme=info.vreme, sastojci=info.sastojci, upustvo=info.uputstvo, nutVrednost=info.nutVrednost, saveti=info.saveti)
+    return Recept(vrednost=0, alergeni=[], name=info.name, opis=info.opis, url=info.url, vrsta=info.vrsta, vreme=info.vreme, sastojci=info.sastojci, uputstvo=info.uputstvo, nutVrednost=info.nutVrednost, savet=info.savet)
 
 def knjiga_recepata(model):
     for recept in model.recepti:
@@ -13,20 +13,20 @@ def knjiga_recepata(model):
         recept.alergeni = svi_alergeni_recepta(model.namirnice, recept.sastojci)
     return model
 
-def init_cv_metamodel():
-    cv_grammar_path = 'recipe.tx'
+def init_recipe_metamodel():
+    cv_grammar_path = 'metamodel/recipe_jsd/recipe.tx'
     cv_metamodel = metamodel_from_file(cv_grammar_path)
     cv_metamodel.register_obj_processors({'KnjigaRecepata': knjiga_recepata,'Recept': recipe_processor})
 
-    robot_model = cv_metamodel.model_from_file('../../example/recipe_example.rcp')
+    robot_model = cv_metamodel.model_from_file('Example/recipe_example.rcp')
     model_export(robot_model,'program.dot')
 
-    return cv_metamodel
+    return robot_model
 
 
 @language('recipe', '*.rcp')
 def cv_parser():
-    return init_cv_metamodel()
+    return init_recipe_metamodel()
 
 def kalorijska_vrednost_recepta(namirnice, sastojci):
     vrednost = 0
@@ -59,7 +59,7 @@ def svi_alergeni_recepta(namirnice, sastojci):
 def main():
     cv_file_path = 'examples/example1.cv'
 
-    init_cv_metamodel()
+    init_recipe_metamodel()
 
 if __name__ == '__main__':
     main()
