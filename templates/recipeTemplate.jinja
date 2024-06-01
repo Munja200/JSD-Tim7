@@ -11,13 +11,80 @@
             margin: 0;
             padding: 0;
         }
+
+        .search-container{
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px 40px 20px;
+            margin-top: 50px;
+            border-radius:20px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+        }
+
+        .search-section-title{
+            font-family: "Sedan", serif;
+            font-weight: 600;
+            font-style: normal;
+            color: #885B31;
+            font-size: 50px;
+            margin-bottom: 0;
+            position: relative;
+            top: -35px;
+            left: 30px;
+            margin-top: 0;
+            margin-bottom: -10px;
+        }
+
+        .search-inputs-container{
+            width: 100%;
+            text-align: center;
+        }
+
+        .search-container input{
+            border: 1px solid #885B31;
+            font-size: 16px;
+            border-radius: 10px;
+            padding: 5px 10px;
+            width: 250px;
+            height: 25px;
+            margin-right:10px;
+        }
+
+        .search-container input:focus{
+            outline: none !important;
+            background-color: #F9F3EE;
+            border: 1px solid #885B31;
+            box-shadow: 0 0 5px #885B31;
+        }
+
+        #recipe-select{
+            border: 1px solid #885B31;
+            border-radius: 10px;
+            padding: 5px 10px;
+            font-size: 15px;
+            width: 250px;
+            height: 37px;
+            margin-left:10px;
+        }
+
+        #recipe-select:focus{
+            outline: none !important;
+            background-color: #F9F3EE;
+            border: 1px solid #885B31;
+            box-shadow: 0 0 5px #885B31;
+        }
+        
         .container {
+            display: none;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
             margin-top: 30px;
             border-radius:20px;
             box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+        }
+        .container.show{
+            display:block;
         }
         h1 {
             text-align: center;
@@ -147,8 +214,22 @@
         </style>
 </head>
 <body>
+    <div class="search-container">
+        <h2 class="search-section-title">Pretraga</h2>
+        <div class="search-inputs-container">
+            <input type="text" id="search-input" placeholder="Pretraga po naslovu...">
+            <select id="recipe-select" onchange="searchRecipesByType()">
+                <option value="all">Vrsta jela</option>
+
+                {% for recept in model.recepti | unique %}
+                    <option value="{{ recept.vrsta }}">{{ recept.vrsta }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
     {% for recept in model.recepti %}
-        <div class="container">
+        <div class="container show"  data-title="{{ recept.name }}" data-type="{{ recept.vrsta }}">
             <h1 class="page-title">{{ recept.name }}</h1>
             <h4>-{{ recept.vrsta }}-</h4>
             <div class="main-image-container">
@@ -203,5 +284,43 @@
             </div>
         </div>
     {% endfor %}
+
+    <script>
+        const searchRecipes = function(e) {
+            var select = document.getElementById('recipe-select');
+            var selectedType = select.value.toLowerCase();
+            var recipes = document.querySelectorAll('.container');
+
+            recipes.forEach(function(recipe) {
+                var title = recipe.getAttribute('data-title').toLowerCase();
+                var type = recipe.getAttribute('data-type').toLowerCase();
+                if ((type === selectedType || selectedType === "all") && title.includes(e.target.value.toLowerCase())) {
+                    recipe.classList.add('show');
+                } else {
+                    recipe.classList.remove('show');
+                }
+            });
+        }
+
+        function searchRecipesByType() {
+            var select = document.getElementById('recipe-select');
+            var selectedType = select.value.toLowerCase();
+            var recipes = document.querySelectorAll('.container');
+            var titleInput = document.getElementById('search-input').value.toLowerCase();
+            
+            recipes.forEach(function(recipe) {
+                var title = recipe.getAttribute('data-title').toLowerCase();
+                var type = recipe.getAttribute('data-type').toLowerCase();
+                if ((type === selectedType || selectedType === "all") && title.includes(titleInput)) {
+                    recipe.classList.add('show');
+                } else {
+                    recipe.classList.remove('show');
+                }
+            });
+        }
+
+        var input = document.getElementById('search-input');
+        input.addEventListener('input', searchRecipes);
+    </script>
 </body>
 </html>
