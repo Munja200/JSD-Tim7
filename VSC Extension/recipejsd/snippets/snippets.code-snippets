@@ -16,6 +16,9 @@
         "\tLista sastojaka:",
         "\t\t1. ;",
         "\n\tUputstvo za spremanje:",
+        "\t\t1. ;",
+        "\n\tNutritivna vrednost: ;",
+        "\n\tSaveti:",
         "\t\t1. ;"
     ],
     "description": "Creates the structure of the recepie"
