@@ -10,8 +10,8 @@ Recept:
     'Vrsta jela:' vrsta=StringBezNavodnika
     'Vreme pripreme:' vreme=VremePripreme ';'
     'Lista sastojaka:' sastojci+=Sastojak
-    'Upustvo za spremanje:' uputstvo=Uputstvo
-    ('Nutritivna vrednost:' nutVrednost=StringBezNavodnika)?
+    'Uputstvo za spremanje:' uputstvo=Uputstvo
+    ('Nutritivna vrednost:' nutVrednost=NutritivnaVrednost ';')?
     ('Saveti:' savet=Savet)?
 ;
 
