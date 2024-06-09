@@ -1,0 +1,20 @@
+NutritivnaVrednost:
+    vrednost=INT 'kcal na ' kolicina=INT jedinicaMase=JedinicaMase
+;
+
+StringBezNavodnika[noskipws]:
+ /\s*/- Reč+ ';'-
+;
+
+Reč:
+    ID /[.,:?!\s]*/
+;
+
+
+JedinicaMase:
+    'KG' | 'kg' | 'G' | 'g'
+;
+
+RedniBroj:
+    INT '.'
+;

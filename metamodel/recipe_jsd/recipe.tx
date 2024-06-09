@@ -1,3 +1,6 @@
+import grocery
+import modul
+
 KnjigaRecepata:
     'Namirnice:' namirnice+=Namirnica
     'Recepti:' recepti+=Recept
@@ -27,32 +30,10 @@ VremePripreme:
     sati=INT ':' minuti=INT
 ;
 
-Namirnica:
-    'Ime namirnice:' imeNamirnice=StringBezNavodnika
-    'Nutritivna vrednost:' nutVrednost=NutritivnaVrednost ';'
-    ('Alergeni:' alergeni*=Alergen)?
-;
-
-Alergen:
-    RedniBroj
-    naziv=StringBezNavodnika
-;
-
-NutritivnaVrednost:
-    vrednost=INT 'kcal na ' kolicina=INT jedinicaMase=JedinicaMase
-;
-
-JedinicaMase:
-    'KG' | 'kg' | 'G' | 'g'
-;
-
 Sastojak:
     RedniBroj imeSastojka=StringBezNavodnikaOdvojenZarezom kolicina=INT jedinicaMase=JedinicaMase ';'
 ;
 
-RedniBroj:
-    INT '.'
-;
 
 Uputstvo:
     koraci+=Korak
@@ -62,17 +43,11 @@ Korak:
     RedniBroj tekst=StringBezNavodnika
 ;
 
-StringBezNavodnika[noskipws]:
- /\s*/- Reč+ ';'-
-;
 
 StringBezNavodnikaOdvojenZarezom[noskipws]:
  /\s*/- RečBezZareza+ ','-
 ;
 
-Reč:
-    ID /[.,:?!\s]*/
-;
 
 RečBezZareza:
     ID /[.:?!\s]*/

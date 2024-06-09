@@ -1,0 +1,15 @@
+import modul
+
+Namirnica:
+    'Ime namirnice:' imeNamirnice=StringBezNavodnika
+    'Nutritivna vrednost:' nutVrednost=NutritivnaVrednost ';'
+    ('Alergeni:' alergeni*=Alergen)?
+;
+
+
+
+Alergen:
+    RedniBroj
+    naziv=StringBezNavodnika
+;
+
