@@ -14,18 +14,18 @@ def knjiga_recepata(model):
     return model
 
 def init_recipe_metamodel():
-    cv_grammar_path = 'metamodel/recipe_jsd/recipe.tx'
-    cv_metamodel = metamodel_from_file(cv_grammar_path)
-    cv_metamodel.register_obj_processors({'KnjigaRecepata': knjiga_recepata,'Recept': recipe_processor})
+    rcp_grammar_path = 'metamodel/recipe_jsd/recipe.tx'
+    rcp_metamodel = metamodel_from_file(rcp_grammar_path)
+    rcp_metamodel.register_obj_processors({'KnjigaRecepata': knjiga_recepata,'Recept': recipe_processor})
 
-    robot_model = cv_metamodel.model_from_file('Example/recipe_example.rcp')
+    robot_model = rcp_metamodel.model_from_file('Example/recipe_example.rcp')
     model_export(robot_model,'program.dot')
 
     return robot_model
 
 
 @language('recipe', '*.rcp')
-def cv_parser():
+def rcp_parser():
     return init_recipe_metamodel()
 
 def kalorijska_vrednost_recepta(namirnice, sastojci):
@@ -41,7 +41,7 @@ def kalorijska_vrednost_recepta(namirnice, sastojci):
 
 def dobavi_namjernicu_po_imenu_sastojka(ime_sastojka, namjernice):
     for namjernica in namjernice:
-        if namjernica.imeNamirnice.lower() == ime_sastojka.lower():
+        if namjernica.name.lower() == ime_sastojka.name.lower():
             if namjernica.nutVrednost.jedinicaMase == 'KG' or namjernica.nutVrednost.jedinicaMase == 'kg':
                 namjernica.nutVrednost.kolicina = namjernica.nutVrednost.kolicina * 1000
                 namjernica.nutVrednost.jedinicaMase = 'g'
@@ -57,8 +57,6 @@ def svi_alergeni_recepta(namirnice, sastojci):
     return alergeni
 
 def main():
-    cv_file_path = 'examples/example1.cv'
-
     init_recipe_metamodel()
 
 if __name__ == '__main__':

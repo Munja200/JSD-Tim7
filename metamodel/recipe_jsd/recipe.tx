@@ -31,7 +31,7 @@ VremePripreme:
 ;
 
 Sastojak:
-    RedniBroj imeSastojka=StringBezNavodnikaOdvojenZarezom kolicina=INT jedinicaMase=JedinicaMase ';'
+    RedniBroj imeSastojka=[Namirnica] kolicina=INT jedinicaMase=JedinicaMase ';'
 ;
 
 

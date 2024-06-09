@@ -253,7 +253,7 @@
                     <h2 class="section-title">Sastojci</h2>
                     <ul>
                         {% for sastojak in recept.sastojci %}
-                            <li>{{sastojak.kolicina}} {{ sastojak.jedinicaMase}} {{sastojak.imeSastojka}}</li>
+                            <li>{{sastojak.kolicina}} {{ sastojak.jedinicaMase}} {{sastojak.imeSastojka.name}}</li>
                         {% endfor %}
                     </ul>
                 </div>

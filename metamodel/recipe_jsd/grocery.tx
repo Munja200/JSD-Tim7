@@ -1,7 +1,7 @@
 import modul
 
 Namirnica:
-    'Ime namirnice:' imeNamirnice=StringBezNavodnika
+    'Ime namirnice:' name=ID ';'
     'Nutritivna vrednost:' nutVrednost=NutritivnaVrednost ';'
     ('Alergeni:' alergeni*=Alergen)?
 ;
