@@ -13,4 +13,15 @@ setup(
         'setuptools==69.1.0',
         'wheel==0.43.0'
     ],
+    package_data={
+        "": ["metamodel/recipe_jsd/*.tx", "templates/*.jinja"]
+    },
+    entry_points={
+        'textx_languages': [
+            'recipe_lang = metamodel.recipe_jsd.recipe:rcp_parser',
+        ],
+        'textx_generators': [
+            'recipe_gen = generator.recipe_generator.generator:rcp_generator',
+        ]
+    },
 )
