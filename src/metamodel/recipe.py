@@ -13,12 +13,15 @@ def knjiga_recepata(model):
         recept.alergeni = svi_alergeni_recepta(model.namirnice, recept.sastojci)
     return model
 
-def init_recipe_metamodel():
+def init_recipe_metamodel(path=None):
     rcp_grammar_path = 'src/metamodel/recipe.tx'
     rcp_metamodel = metamodel_from_file(rcp_grammar_path)
     rcp_metamodel.register_obj_processors({'KnjigaRecepata': knjiga_recepata,'Recept': recipe_processor})
-
-    robot_model = rcp_metamodel.model_from_file('Example/recipe_example.rcp')
+    if path is None:
+        robot_model = rcp_metamodel.model_from_file("Example/recipe_example.rcp")
+    else:
+        robot_model = rcp_metamodel.model_from_file(path)
+    
     model_export(robot_model,'program.dot')
 
     return robot_model
