@@ -1,0 +1,51 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Recipe DSL",
+	"patterns": [
+    {
+      "match": "//.*$",
+      "name": "comment.line"
+    },
+    {
+      "name": "comment.block",
+      "begin": "/\\*",
+      "end": "\\*/"
+    },
+    {
+      "name": "keyword.control.rcp",
+      "match": "\\b(Namirnice|Recepti)\\b"
+    },
+    {
+      "name": "entity.name.variable.rcp",
+      "match": "\\b(Ime namirnice|Nutritivna vrednost|Alergeni|Ime|URL do slike jela|Opis jela|Vrsta jela|Vreme pripreme|Lista sastojaka|Uputstvo za spremanje|Saveti)\\b"
+    },
+    {
+      "name": "string.quoted.single",
+      "begin": "'",
+      "end": "'"
+    },
+    {
+      "name": "string.quoted.double",
+      "begin": "\"",
+      "end": "\""
+    },
+    {
+      "name": "constant.numeric",
+      "match": "\\b(\\d*\\.?\\d+)\\b",
+      "captures": {
+        "1": {
+          "name": "constant.numeric.float"
+        }
+      }
+    },
+    {
+      "name": "entity.name.type",
+      "match": "\\b(KG|G|kg|g|kcal)\\b"
+    },
+    {
+      "name": "entity.name.function",
+      "match": "\\b[A-Za-zšđčćžŠĐČĆŽ]+\\b"
+    }
+  ],
+	"scopeName": "source.rcp"
+}

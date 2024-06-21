@@ -1,0 +1,54 @@
+import grocery
+import modul
+
+KnjigaRecepata:
+    'Namirnice:' namirnice+=Namirnica
+    'Recepti:' recepti+=Recept
+;
+
+Recept:
+    'Ime:' name=StringBezNavodnika
+    ('URL do slike jela:' url=URL ';')?
+    'Opis jela:' opis=StringBezNavodnika
+    'Vrsta jela:' vrsta=StringBezNavodnika
+    'Vreme pripreme:' vreme=VremePripreme ';'
+    'Lista sastojaka:' sastojci+=Sastojak
+    'Uputstvo za spremanje:' uputstvo=Uputstvo
+    ('Nutritivna vrednost:' nutVrednost=NutritivnaVrednost ';')?
+    ('Saveti:' savet=Savet)?
+;
+
+URL: '"'- URL_BAZA '"'- | '\''- URL_BAZA '\''-;
+
+URL_BAZA: /https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)/;
+
+Savet:
+    koraci+=Korak
+;
+
+VremePripreme:
+    sati=INT ':' minuti=INT
+;
+
+Sastojak:
+    RedniBroj imeSastojka=[Namirnica] kolicina=INT jedinicaMase=JedinicaMase ';'
+;
+
+
+Uputstvo:
+    koraci+=Korak
+;
+
+Korak:
+    RedniBroj tekst=StringBezNavodnika
+;
+
+
+StringBezNavodnikaOdvojenZarezom[noskipws]:
+ /\s*/- RečBezZareza+ ','-
+;
+
+
+RečBezZareza:
+    ID /[.:?!\s]*/
+;

@@ -1,0 +1,40 @@
+{
+  "name": "recipejsd",
+  "displayName": "RecipeJSD",
+  "description": "DSL for recipes",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "rcp",
+        "aliases": [
+          "Recipe DSL",
+          "rcp"
+        ],
+        "extensions": [
+          ".rcp"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "rcp",
+        "scopeName": "source.rcp",
+        "path": "./syntaxes/rcp.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "rcp",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  }
+}

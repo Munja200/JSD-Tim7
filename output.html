@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sedan:ital@0;1&display=swap" rel="stylesheet">
+    <title>Cooking Recipes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .search-container{
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px 40px 20px;
+            margin-top: 50px;
+            border-radius:20px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+        }
+
+        .search-section-title{
+            font-family: "Sedan", serif;
+            font-weight: 600;
+            font-style: normal;
+            color: #885B31;
+            font-size: 50px;
+            margin-bottom: 0;
+            position: relative;
+            top: -35px;
+            left: 30px;
+            margin-top: 0;
+            margin-bottom: -10px;
+        }
+
+        .search-inputs-container{
+            width: 100%;
+            text-align: center;
+        }
+
+        .search-container input{
+            border: 1px solid #885B31;
+            font-size: 16px;
+            border-radius: 10px;
+            padding: 5px 10px;
+            width: 250px;
+            height: 25px;
+            margin-right:10px;
+        }
+
+        .search-container input:focus{
+            outline: none !important;
+            background-color: #F9F3EE;
+            border: 1px solid #885B31;
+            box-shadow: 0 0 5px #885B31;
+        }
+
+        #recipe-select{
+            border: 1px solid #885B31;
+            border-radius: 10px;
+            padding: 5px 10px;
+            font-size: 15px;
+            width: 250px;
+            height: 37px;
+            margin-left:10px;
+        }
+
+        #recipe-select:focus{
+            outline: none !important;
+            background-color: #F9F3EE;
+            border: 1px solid #885B31;
+            box-shadow: 0 0 5px #885B31;
+        }
+        
+        .container {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius:20px;
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+        }
+        .container.show{
+            display:block;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h4{
+            color: #885B31;
+            text-align: center;
+            margin-top:0;
+            margin-bottom:30px;
+        }
+
+        .section-title {
+            font-family: "Sedan", serif;
+            font-weight: 500;
+            font-style: normal;
+            color: #885B31;
+            font-size: 50px;
+            margin-bottom: 0;
+            position: relative;
+            top: -35px;
+            margin-left: 30px;
+            margin-top: 0;
+        }
+
+        .page-title{
+            font-family: "Sedan", serif;
+            font-weight: 900;
+            color: #885B31;
+            font-size: 50px;
+        }
+
+        ul, ol{
+            margin-top:-15px;
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 7px;
+        }
+
+        .section {
+            width: 100%;
+            margin-bottom: 20px;
+            background-color: #F9F3EE;
+            border-radius: 30px;
+            margin-bottom: 70px;
+            padding-bottom: 10px;
+        }
+
+        .instructions {
+            margin-bottom: 20px;
+        }
+
+        .notes {
+            font-style: italic;
+        }
+
+        .tips-text {
+            margin-left: 40px;
+            margin-top: -20px;
+        }
+
+        .recipe-image {
+            width: 75vh;
+            height: 55vh;
+            object-fit: cover;
+            border-radius: 30px;
+            margin-bottom: 20px;
+        }
+
+        .main-image-container{
+            display: flex;
+        }
+
+        .recipe-info-section{
+            margin-left: 20px;
+            margin-top: 20px;
+            background-color: #F9F3EE;
+            border-radius: 20px;
+            width: 250px;
+            height: fit-content;
+            padding-top: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            position: relative;
+            top: 30px;
+            left: -80px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;               
+        }
+
+        .icon{
+            width: 30px;
+        }
+
+        .icon-text{
+            margin-left: 5px;
+            font-weight: bold;
+        }
+
+        .description-text{
+            margin-top: 20px;
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+
+        .icons-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ingredients-container{
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .ingredients-container .section:first-child{
+            margin-right: 20px;
+        }
+        .ingredients-container .section:last-child{
+            margin-left: 20px;
+        }
+        </style>
+</head>
+<body>
+    <div class="search-container">
+        <h2 class="search-section-title">Pretraga</h2>
+        <div class="search-inputs-container">
+            <input type="text" id="search-input" placeholder="Pretraga po naslovu...">
+            <select id="recipe-select" onchange="searchRecipesByType()">
+                <option value="all">Vrsta jela</option>
+
+                
+                    <option value="Pecivo">Pecivo</option>
+                
+            </select>
+        </div>
+    </div>
+
+    
+        <div class="container show"  data-title="Banana hleb" data-type="Pecivo">
+            <h1 class="page-title">Banana hleb</h1>
+            <h4>-Pecivo-</h4>
+            <div class="main-image-container">
+                <img class="recipe-image" src="https://marketplace.canva.com/EAFNsV8XtFc/1/0/1067w/canva-white-modern-recipe-card-g0ij-n11PwM.jpg">
+                <div class="recipe-info-section">
+                    <div class="icons-container">
+                        <img class="icon" src="C:\Users\rasko\Desktop\JSD\JSD-Tim7\src\icons\stopwatch.png">
+                        <span class="icon-text">0:30</span>
+                        <img class="icon" style="margin-left: 15px;" src="C:\Users\rasko\Desktop\JSD\JSD-Tim7\src\icons\calories-calculator.png">
+                        <span class="icon-text">155.0kcal</span>
+                    </div>
+                    <div class="description-text">
+                        pecivo sa bananom               
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="ingredients-container">
+                <div class="section half-screen-section">
+                    <h2 class="section-title">Sastojci</h2>
+                    <ul>
+                        
+                            <li>1 KG Banane</li>
+                        
+                            <li>500 g Brašno</li>
+                        
+                    </ul>
+                </div>
+                <div class="section half-screen-section">
+                    <h2 class="section-title">Alergeni</h2>
+                    <ul>
+                        
+                            <li>Gluten</li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="section">
+                <h2 class="section-title">Uputstvo za spremanje</h2>
+                <ol>
+                    
+                        <li>Izmiksati banane</li>
+                    
+                        <li>Pomešati sa brašnom</li>
+                    
+                        <li>Ispeći</li>
+                    
+                </ol>
+            </div>
+            <div class="section">
+                <h2 class="section-title">Saveti</h2>
+                <ul>
+                    
+                        <li>Operi posudje pre spremanja</li>
+                    
+                </ul>
+            </div>
+        </div>
+    
+
+    <script>
+        const searchRecipes = function(e) {
+            var select = document.getElementById('recipe-select');
+            var selectedType = select.value.toLowerCase();
+            var recipes = document.querySelectorAll('.container');
+
+            recipes.forEach(function(recipe) {
+                var title = recipe.getAttribute('data-title').toLowerCase();
+                var type = recipe.getAttribute('data-type').toLowerCase();
+                if ((type === selectedType || selectedType === "all") && title.includes(e.target.value.toLowerCase())) {
+                    recipe.classList.add('show');
+                } else {
+                    recipe.classList.remove('show');
+                }
+            });
+        }
+
+        function searchRecipesByType() {
+            var select = document.getElementById('recipe-select');
+            var selectedType = select.value.toLowerCase();
+            var recipes = document.querySelectorAll('.container');
+            var titleInput = document.getElementById('search-input').value.toLowerCase();
+            
+            recipes.forEach(function(recipe) {
+                var title = recipe.getAttribute('data-title').toLowerCase();
+                var type = recipe.getAttribute('data-type').toLowerCase();
+                if ((type === selectedType || selectedType === "all") && title.includes(titleInput)) {
+                    recipe.classList.add('show');
+                } else {
+                    recipe.classList.remove('show');
+                }
+            });
+        }
+
+        var input = document.getElementById('search-input');
+        input.addEventListener('input', searchRecipes);
+    </script>
+</body>
+</html>
