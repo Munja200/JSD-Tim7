@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "recipe"
 version = "0.0.1"
 license = {text = "MIT License"}
-authors = ["Stefan", "Nemanja", "Mihailo", "Radisa"]
+authors = [ {name = "Stefan Apostolovic", email = "stefan.apostolovic@gmail.com"}]
 dependencies = [
     "arpeggio",
 "Brotli==1.1.0",
@@ -30,14 +30,5 @@ dependencies = [
     'importlib-metadata; python_version<"3.10"'
 ]
 
-[tool.setuptools]
-packages = { find = { where = ["src"] } }
-include-package-data = true
-
-
-
-[tool.setuptools.package-dir]
-"" = "src"
-
 [project.scripts]
-rcp-run="src.main:main"
+rcp-run="main:main"
