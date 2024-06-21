@@ -39,4 +39,4 @@ include-package-data = true
 "" = "src"
 
 [project.scripts]
-rcp-run="main:main"
+rcp-run="src.main:main"
