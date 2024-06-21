@@ -21,7 +21,7 @@ def init_recipe_metamodel(path=None):
     rcp_metamodel = metamodel_from_file(rcp_grammar_path)
     rcp_metamodel.register_obj_processors({'KnjigaRecepata': knjiga_recepata,'Recept': recipe_processor})
     if path is None:
-        robot_model = rcp_metamodel.model_from_file(module_path('../Example/recipe_example.rcp'))
+        robot_model = rcp_metamodel.model_from_file(module_path('Example/recipe_example.rcp'))
     else:
         robot_model = rcp_metamodel.model_from_file(path)
     
