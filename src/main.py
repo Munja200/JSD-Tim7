@@ -1,5 +1,5 @@
-from generator.recipe_generator import generator 
-from metamodel.recipe_jsd import recipe
+from generator import generator
+from metamodel import recipe
 import logging
 
 

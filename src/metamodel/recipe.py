@@ -14,7 +14,7 @@ def knjiga_recepata(model):
     return model
 
 def init_recipe_metamodel():
-    rcp_grammar_path = 'metamodel/recipe_jsd/recipe.tx'
+    rcp_grammar_path = 'src/metamodel/recipe.tx'
     rcp_metamodel = metamodel_from_file(rcp_grammar_path)
     rcp_metamodel.register_obj_processors({'KnjigaRecepata': knjiga_recepata,'Recept': recipe_processor})
 

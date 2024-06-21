@@ -3,7 +3,7 @@ import os
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 def generate_recipe(recipe_model):
-    env = Environment(loader=FileSystemLoader('templates'), autoescape=select_autoescape(['html', 'xml']))
+    env = Environment(loader=FileSystemLoader('src/templates'), autoescape=select_autoescape(['html', 'xml']))
     template = env.get_template('recipeTemplate.jinja')
     html_output = template.render(model=recipe_model)
 
