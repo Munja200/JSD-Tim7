@@ -3,6 +3,8 @@ import os
 from .model import Recept
 from textx import metamodel_from_file, language
 from textx.export import model_export
+from utils import module_path
+
 
 def recipe_processor(info):
     return Recept(vrednost=0, alergeni=[], name=info.name, opis=info.opis, url=info.url, vrsta=info.vrsta, vreme=info.vreme, sastojci=info.sastojci, uputstvo=info.uputstvo, nutVrednost=info.nutVrednost, savet=info.savet)
@@ -13,12 +15,16 @@ def knjiga_recepata(model):
         recept.alergeni = svi_alergeni_recepta(model.namirnice, recept.sastojci)
     return model
 
-def init_recipe_metamodel():
-    rcp_grammar_path = 'metamodel/recipe_jsd/recipe.tx'
+def init_recipe_metamodel(path=None):
+    
+    rcp_grammar_path = module_path('metamodel/recipe.tx')
     rcp_metamodel = metamodel_from_file(rcp_grammar_path)
     rcp_metamodel.register_obj_processors({'KnjigaRecepata': knjiga_recepata,'Recept': recipe_processor})
-
-    robot_model = rcp_metamodel.model_from_file('Example/recipe_example.rcp')
+    if path is None:
+        robot_model = rcp_metamodel.model_from_file(module_path('Example/recipe_example.rcp'))
+    else:
+        robot_model = rcp_metamodel.model_from_file(path)
+    
     model_export(robot_model,'program.dot')
 
     return robot_model
