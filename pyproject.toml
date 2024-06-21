@@ -30,13 +30,5 @@ dependencies = [
     'importlib-metadata; python_version<"3.10"'
 ]
 
-[tool.setuptools]
-packages = { find = { where = ["src"] } }
-include-package-data = true
-
-
-[tool.setuptools.package-dir]
-"" = "src"
-
 [project.scripts]
-rcp-run="src.main:main"
+rcp-run="main:main"
