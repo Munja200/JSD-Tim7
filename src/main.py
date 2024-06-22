@@ -6,7 +6,6 @@ import sys
 
 def main():
     try:
-        print(sys.argv[1:])
         args = sys.argv[1:]
         if len(args) == 0:
             generator.generate_recipe(recipe.init_recipe_metamodel())

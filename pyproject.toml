@@ -32,3 +32,9 @@ dependencies = [
 
 [project.scripts]
 rcp-run="main:main"
+
+[project.entry-points.textx_languages]
+recipe_dsl = "metamodel.recipe:rcp_parser"
+
+[project.entry-points.textx_generators]
+recipe_dsl_html = "generator.generator:generate_recipe_descriptor"
