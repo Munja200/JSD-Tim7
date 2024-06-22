@@ -14,8 +14,7 @@ python -m venv venv
 source venv/bin/activate
 pip install git+https://github.com/Munja200/JSD-Tim7.git
 ```
-
-Nakon toga aplikacija se može pokrenuti uz pomoć komande ```rcp-run [putanja .rcp datoteke]```, ili samo putem komande ```rcp-run```, u tom slučaju će se izgenerisati recept na osnovu ugrađenog primera.
+Nakon toga aplikacija se može pokrenuti uz pomoć komande ```rcp-run [putanja do .rcp datoteke]```, ili samo putem komande ```rcp-run```, u tom slučaju će se izgenerisati recept na osnovu ugrađenog primera.
 
 ## Koraci u definisanju
 
